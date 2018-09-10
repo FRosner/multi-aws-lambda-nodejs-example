@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "workspaces": [
+    "lambda/*"
+  ],
+  "scripts": {
+    "format:test": "prettier --config '.prettierrc.json' --list-different '**/*.js' && (cd terraform && terraform fmt -check=true -list=true)",
+    "format:fix": "prettier --config '.prettierrc.json' --write '**/*.js' && (cd terraform && terraform fmt -write=true)",
+    "lint:test": "eslint --config .eslintrc.json '**/*.js'",
+    "lint:fix": "eslint --config .eslintrc.json '**/*.js' --fix",
+    "terraform:init": "set -e; (cd terraform && terraform init)",
+    "terraform:apply": "set -e; (cd terraform && terraform apply -auto-approve)",
+    "terraform:destroy": "set -e; (cd terraform && terraform destroy -auto-approve)",
+    "clean": "yarn wsrun clean && rm -rf node_modules",
+    "test": "yarn wsrun test",
+    "package": "yarn wsrun package",
+    "deploy": "yarn package && yarn terraform:apply",
+    "destroy": "yarn package && yarn terraform:destroy"
+  },
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "prettier": "^1.14.2",
+    "terraform-npm": "^0.2.6",
+    "wsrun": "^2.2.1"
+  }
+}

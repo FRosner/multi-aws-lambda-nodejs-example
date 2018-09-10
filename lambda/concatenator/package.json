@@ -1,0 +1,21 @@
+{
+  "name": "concatenator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "clean": "gulp clean || true; rm -rf node_modules;",
+    "test": "mocha test/",
+    "package": "gulp"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "gulp": "^3.9.1",
+    "gulp-yarn": "^2.0.0",
+    "gulp-zip": "^4.2.0",
+    "lambda-local": "^1.5.1",
+    "mocha": "^5.2.0",
+    "rimraf": "^2.6.2",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {}
+}
